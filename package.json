@@ -4,12 +4,16 @@
   "description": "a comprehensive backend for the dating app called matchify or matchango",
   "main": "index.js",
   "scripts": {
+    "dev":"nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^10.0.0",
-    "mongoose": "^5.13.7"
+    "express": "^4.17.1",
+    "mongoose": "^5.13.7",
+    "nodemon": "^2.0.12"
   }
 }
