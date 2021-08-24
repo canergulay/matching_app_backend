@@ -6,7 +6,7 @@ const {sendmail,verifymail} = require('../routers/email_verification_router')
 
 
 router.post('/sendmail',sendmail)
-router.post('/sendsms',verifymail)
+router.post('/verifymail',verifymail)
 
 
 //for now we will go on with only email verification for the sake of affordability.
