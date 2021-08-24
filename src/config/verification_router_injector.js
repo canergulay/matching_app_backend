@@ -5,8 +5,8 @@ const {sendmail,verifymail} = require('../routers/email_verification_router')
 
 
 
-router.post('/sendmail',sendmail)
-router.post('/verifymail',verifymail)
+router.post('/auth/sendmail',sendmail)
+router.post('/auth/verifymail',verifymail)
 
 
 //for now we will go on with only email verification for the sake of affordability.
@@ -17,8 +17,8 @@ router.post('/verifymail',verifymail)
 //suppose we published the app and encountered a great number of people who liked and downloaded it,
 // We would have to pay 250 turkish liras for 1000 users, which is unaffordable at the initial steps of this bussiness.
  
-router.get('/sendsms',sendSMS)
-router.get('/verifysms',verifySMS)
+router.get('/auth/sendsms',sendSMS)
+router.get('/auth/verifysms',verifySMS)
 
 //maybe in the second or third version.
 
