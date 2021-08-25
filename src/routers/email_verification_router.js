@@ -8,8 +8,6 @@ const message = require('../utils/email_message')
 const codeGenerator = require('../utils/code/code_generator')
 const codeSaver = require('../utils/code/code_saver')
 const isCodeValid = require('../utils/code/code_verifier')
-const mailCacher = require('../utils/code/email_cacher')
-const cacheController = require('../utils/code/cache_controller')
 
 async function sendmail(req,res){
 
@@ -27,7 +25,7 @@ async function sendmail(req,res){
           .then(() => {
             codeSaver(codeToSend,to).then(()=>{
               res.send('success')
-              mailCacher(to)
+             
               // if user verifies mail, we will cache it.
             }).catch((error)=>{
               res.status(500).send('we got a problem..')
@@ -40,6 +38,7 @@ async function sendmail(req,res){
           })
       
     }catch(error){
+    
       res.status(500).send('we got a problem..')
       console.error(error)
     }
