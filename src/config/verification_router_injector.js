@@ -2,6 +2,9 @@ const express = require('express')
 const router = express.Router()
 const {sendSMS,verifySMS} = require('../routers/sms_verification_router')
 const {sendmail,verifymail} = require('../routers/email_verification_router')
+const Interest = require('../models/interest')
+const SubInterest = require('../models/subinterest')
+
 
 
 
@@ -21,5 +24,32 @@ router.get('/auth/sendsms',sendSMS)
 router.get('/auth/verifysms',verifySMS)
 
 //maybe in the second or third version.
+
+router.get('/subdeneme',async (req,res) => {
+    const subInterestToSave = SubInterest({
+        names:{
+        "tr_TR":"Hintçe",
+        "en_US":"Hindi"
+        },
+    interest:"613a0fb3568e3c1ed0b87101"})
+    
+    await subInterestToSave.save()
+
+    res.send(subInterestToSave)
+})
+
+router.get('/deneme',async (req,res) => {
+    const interestToSave = Interest({code:"sports",names:{
+        
+        
+        "en_US":"Sports",
+        "tr_TR":"Spor"
+    }})
+    
+
+    await interestToSave.save()
+  
+    res.send('saved')
+})
 
 module.exports = router
