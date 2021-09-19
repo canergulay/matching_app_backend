@@ -15,6 +15,7 @@ async function sendmail(req,res){
       const apiKEY = process.env.SENDGRID_API_KEY
       // We will use SendGrid's email sending API, it will cost 30 dollars for 100.000 emails sent.
       // 100.000 users means hundred of dollars, 30 dollars is acceptable for that service.
+      console.log(apiKEY)
       sgMail.setApiKey(apiKEY)
      
       let to = req.body.email

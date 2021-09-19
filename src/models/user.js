@@ -1,13 +1,36 @@
 const mongoose = require('mongoose')
 
 const userSchema = mongoose.Schema({
-    uname:{
+    username:{
         type:String,
     },
-    mail:{
+    usermail:{
         type: String, 
     },
-    
+    password:{
+        type: String, 
+    },
+    studycode:{
+        type:Number
+    },
+    fos:{
+        type:String,
+    },
+    gender:{
+        type:Number,
+    },
+    birthday:{
+        type:Number
+    },
+    interestedin:{
+        type:[Number]
+    },
+    interests:{
+        type:[Number]
+    },
+    images:{
+        type:[String]
+    },
     onBoardCompleted:{
         type: Boolean, 
         default:false
