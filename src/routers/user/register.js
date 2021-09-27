@@ -8,19 +8,9 @@ async function register(req,res){
     res.send({'status':'success','user':userToRegister})
 }
 
-const latLongConverter= function(lat,long){
-    var locObject = {
-        type:'Point',
-        coordinates:[lat,long]
-    }
-    console.log(locObject)
-    return locObject
-}
-
 const userModelParser = async function(body) {
     let password = body.password
     let hashedPasword = await hasher.hashPassword(password)
-
     return User({
         username:body.name,
         usermail:body.email,
@@ -29,11 +19,23 @@ const userModelParser = async function(body) {
         fos:body.fieldOfStudy,
         gender:userConverters.genderConverter(body.genderType),
         birthday:body.birthday,
-        loc:latLongConverter(body.location.lat,body.location.long),
+        location:latLongConverter(body.location.coordinates),
         interestedin:userConverters.interestedInConverter(body.interestedIns),
         interests:[1,2],//DÜZELT
         images:body.photoURLS,
     })
 }
+
+
+const latLongConverter= function(coordinates){
+    console.log(coordinates)
+    var locObject = {
+        type:'Point',
+        coordinates:coordinates
+    }
+    console.log(locObject)
+    return locObject
+}
+
 
 module.exports = register

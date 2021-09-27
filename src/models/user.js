@@ -28,7 +28,7 @@ const userSchema = mongoose.Schema({
     interests:{
         type:[Number]
     },
-    loc: {
+    location: {
         type: { type: String },
         coordinates: [Number],
     },
