@@ -28,6 +28,10 @@ const userSchema = mongoose.Schema({
     interests:{
         type:[Number]
     },
+    loc: {
+        type: { type: String },
+        coordinates: [Number],
+    },
     images:{
         type:[String]
     },
