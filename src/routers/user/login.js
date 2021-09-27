@@ -1,6 +1,6 @@
 const User = require('../../models/user')
 const hasher = require('../../utils/user/hasher')
-
+const tokenGenerators = require('../../utils/jwt/token_generators')
 async function login(req,res){
     
    try{
@@ -9,8 +9,9 @@ async function login(req,res){
 
     let user = await User.findOne({usermail:email})
     
+    let tokens = tokenGenerators.getTokenObject(user._id)
     if(!user){
-        res.send({'status':13,'user':user})
+        res.send({'status':13,'user':user,'tokens':tokens})
     }else{
         let passwordsMatch = await hasher.comparePasswords(password,user.password)
         if(passwordsMatch){
